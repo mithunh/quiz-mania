@@ -1,1 +1,183 @@
-<h1>Start</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <!-- Tailwind output CSS -->
+    <link href="./dist/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="py-5 border-b border-b-gray-100">
+      <div class="container flex justify-between items-center">
+        <a href="">
+          <img src="./images/QUIZMania.svg" alt="" />
+        </a>
+        <a href="#" class="cta cta-secondary inline-block">Exit Quiz</a>
+      </div>
+    </header>
+
+    <main class="px-4 md:px-0">
+      <!-- CATEGORY SCREEN -->
+      <section id="category-screen" class="w-full max-w-[678px] m-auto py-16">
+        <h1 class="text-gray-500 text-[64px] mb-8">
+          Welcome to <span class="font-thin text-primary">QUIZ</span
+          ><span class="font-semibold text-primary">Mania</span>
+        </h1>
+
+        <div class="space-y-7 px-10">
+          <div class="bg-gray-100/30 py-3 px-4 rounded-lg text-xl">
+            <p>Please read all the rules about this quiz before you start.</p>
+            <a href="" class="text-primary">Quiz rules</a>
+          </div>
+
+          <div>
+            <label for="username-input" class="block text-base mb-4"
+              >Full name
+            </label>
+            <input
+              id="username-input"
+              type="text"
+              placeholder="Full name"
+              class="w-full py-4 px-5 border border-gray-100 bg-transparent rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-400 font-medium text-xl"
+            />
+          </div>
+
+          <div id="category-buttons" class="">
+            <label for="username-input" class="block text-base mb-4"
+              >Please select topic to continue
+            </label>
+            <div class="grid grid-cols-2 gap-x-6 gap-y-8 w-full">
+              <!-- JavaScript Option -->
+              <label class="radio-block">
+                <input
+                  type="radio"
+                  name="category"
+                  id="cat-javascript"
+                  value="javascript"
+                  class="custom-radio"
+                />
+                JavaScript Basics
+              </label>
+
+              <!-- React Option -->
+              <label class="radio-block">
+                <input
+                  type="radio"
+                  name="category"
+                  id="cat-react"
+                  value="react"
+                  class="custom-radio"
+                />
+                React Basics
+              </label>
+            </div>
+          </div>
+
+          <button id="start-quiz-btn" class="cta cta-primary" disabled>
+            Start Quiz
+          </button>
+        </div>
+      </section>
+
+      <!-- QUIZ SCREEN -->
+      <section id="quiz-screen" class="hidden">
+        <div id="question-container" class="w-full max-w-[1016px] m-auto py-16">
+          <div class="flex justify-between items-center">
+            <div><h2 id="category-title" class="text-xl text-center"></h2></div>
+            <div>
+              <div id="controls" class="flex items-center justify-between">
+                <span class="px-4 py-2 rounded-lg bg-gray-300"
+                  ><span id="time-left">10</span>s</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-2xl mb-6">1. <span id="question-text"></span></h3>
+          <div class="mb-6">
+            <div id="options-container" class="space-y-4"></div>
+          </div>
+          <div class="flex">
+            <button id="next-btn" class="cta cta-primary" disabled>Next</button>
+            <button id="skip-btn" class="text-xl px-12 py-2">
+              Skip this question
+            </button>
+          </div>
+        </div>
+
+        <!-- <div id="question-container" class="mb-4">
+        <p id="question-text" class="text-lg mb-4"></p>
+        <div id="options-container" class="space-y-3"></div>
+      </div> -->
+      </section>
+
+      <!-- RESULT SCREEN -->
+      <section
+        id="result-screen"
+        class="hidden w-full max-w-[1016px] m-auto py-16 text-center"
+      >
+        <div class="flex items-center justify-center mb-6">
+          <svg
+            class="good hidden"
+            width="97"
+            height="96"
+            viewBox="0 0 97 96"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.5"
+              width="96"
+              height="96"
+              rx="48"
+              fill="#06AF52"
+              fill-opacity="0.1"
+            />
+            <path
+              d="M28.5 51L41 63.5L68.5 36"
+              stroke="#06AF52"
+              stroke-width="6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            class="bad hidden"
+            width="97"
+            height="96"
+            viewBox="0 0 97 96"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M48.6064 11.1115C28.1719 11.1115 11.6064 27.6911 11.6064 48.143C11.6064 68.5948 28.1719 85.1745 48.6064 85.1745C69.0408 85.1745 85.6064 68.5948 85.6064 48.143C85.6064 27.6911 69.0408 11.1115 48.6064 11.1115ZM5.60645 48.143C5.60645 24.3745 24.8582 5.10638 48.6064 5.10638C72.3548 5.10638 91.6064 24.3745 91.6064 48.143C91.6064 71.9116 72.3548 91.1796 48.6064 91.1796C24.8582 91.1796 5.60645 71.9116 5.60645 48.143Z"
+              fill="#B92B5D"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M28.6069 36.1327C28.6069 33.9217 30.3978 32.1293 32.6069 32.1293H32.6428C34.852 32.1293 36.6428 33.9217 36.6428 36.1327C36.6428 38.3438 34.852 40.1361 32.6428 40.1361H32.6069C30.3978 40.1361 28.6069 38.3438 28.6069 36.1327ZM60.5709 36.1327C60.5709 33.9217 62.3617 32.1293 64.5709 32.1293H64.6069C66.8161 32.1293 68.6069 33.9217 68.6069 36.1327C68.6069 38.3438 66.8161 40.1361 64.6069 40.1361H64.5709C62.3617 40.1361 60.5709 38.3438 60.5709 36.1327Z"
+              fill="#B92B5D"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M63.3914 55.0347C64.0066 56.5741 63.2582 58.3215 61.7198 58.9377L41.7198 66.9445C40.1816 67.5602 38.4357 66.8112 37.8203 65.2714C37.205 63.7321 37.9533 61.9847 39.4916 61.3685L59.4918 53.3617C61.0298 52.746 62.7758 53.495 63.3914 55.0347Z"
+              fill="#B92B5D"
+            />
+          </svg>
+        </div>
+        <h3 id="feedback" class="text-[40px] tracking-[4px] uppercase">
+          Congratulation
+        </h3>
+        <p id="score-text" class="text-2xl mb-4"></p>
+        <a href="/" class="cta cta-secondary inline-block">Retake Quiz</a>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

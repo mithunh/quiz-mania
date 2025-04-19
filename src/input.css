@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+  body {
+    @apply bg-secondary font-primary;
+  }
+  p {
+    @apply text-gray-200;
+  }
+}
+
+/* Custom style */
+.cta {
+  @apply text-xl px-12 py-2 border border-primary rounded-lg text-primary font-medium transition-all;
+}
+.cta-primary {
+  @apply bg-primary text-white hover:bg-white hover:text-primary disabled:opacity-50 disabled:hover:bg-primary disabled:hover:text-white disabled:cursor-not-allowed;
+}
+.cta-secondary {
+  @apply hover:bg-primary hover:text-white;
+}
+
+.custom-radio {
+  @apply appearance-none w-5 h-5 min-w-5 rounded-full border-2 border-gray-100 transition duration-200 cursor-pointer;
+}
+
+.custom-radio:checked {
+  @apply border-primary bg-primary bg-no-repeat bg-center;
+  background-image: url("../images/Vector.svg");
+  background-size: 12px 12px;
+}
+
+.radio-block {
+  @apply flex items-center gap-3 p-4 border border-gray-100 rounded-lg w-full cursor-pointer transition;
+}
+.bad-feedback .bad {
+    @apply block;
+}
+.average-feedback .good {
+    @apply block;
+}
